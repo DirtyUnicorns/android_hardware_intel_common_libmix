@@ -715,7 +715,13 @@ void VideoDecoderAVC::updateFormatInfo(vbp_data_h264 *data) {
         enableLowDelayMode(false);
     } else {
         // for baseline profile or constrained high profile, enable low delay mode automatically
-        enableLowDelayMode((data->codec_data->profile_idc == 66) || (data->codec_data->profile_idc == 100 && data->codec_data->constraint_set4_flag == 1 && data->codec_data->constraint_set5_flag == 1));
+        enableLowDelayMode((data->codec_data->profile_idc == 66)
+#ifndef ASUS_ZENFONE2_LP_BLOBS
+                           || (data->codec_data->profile_idc == 100
+                               && data->codec_data->constraint_set4_flag == 1
+                               && data->codec_data->constraint_set5_flag == 1)
+#endif
+                          );
     }
 
     if ((mConfigBuffer.flag & USE_NATIVE_GRAPHIC_BUFFER) && mStoreMetaData) {
