@@ -83,10 +83,6 @@ ifeq ($(ENABLE_IMG_GRAPHICS),true)
     endif
 endif
 
-ifeq ($(INTEL_HWC_MOOREFIELD_HAS_LP_BLOBS),true)
-   LOCAL_CFLAGS += -DLP_BLOBS
-endif
-
 LOCAL_CFLAGS += -Werror
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := libva_videoencoder
@@ -97,10 +93,6 @@ include $(BUILD_SHARED_LIBRARY)
 # =====================================================
 
 include $(CLEAR_VARS)
-
-ifeq ($(INTEL_HWC_MOOREFIELD_HAS_LP_BLOBS),true)
-   LOCAL_CFLAGS += -DLP_BLOBS
-endif
 
 VIDEO_ENC_LOG_ENABLE := true
 
